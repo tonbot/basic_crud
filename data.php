@@ -9,7 +9,16 @@ include_once "dbconnection.php";
 
  if ($data !=null ){
     $result=$data->registerStudent($fname, $lname, $email, $pass);
-    header("location:studentlogin.php");
+    if ($result=="Exist")
+    {
+      echo "<h3>USER WITH THIS EMAIL ALREADY REGISTERED</h3><br/>";
+      echo "<a href='index.php'>Back to REGISTRATION PORTAL</a>";
+    }
+    else 
+    {
+      header("location:studentlogin.php");
+    }
+    
  }
 
 

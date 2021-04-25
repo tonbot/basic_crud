@@ -25,11 +25,21 @@
 
 function registerStudent($fname, $lname, $email, $pass) // register student
  {  
+    $query="SELECT * FROM students_profile WHERE email='$email'";
+    $result_set=$this->pdo->query($query);
+    $result= $result_set->fetchall();
+    $count=sizeof($result);
+    if($count > 0)
+    {
+            return "Exist";
+    } 
+    else{
     $query="INSERT INTO students_profile(first_name, last_name, email, passwordd ) VALUES ( '$fname', '$lname', '$email', '$pass')";
     $result_set=$this->pdo->exec($query);
     if ($result_set)
     {
         return $result_set;
+    }
     }
  }
 
@@ -76,7 +86,7 @@ function registerStudent($fname, $lname, $email, $pass) // register student
  function deletecourse($email){ // course Delete
     $query="DELETE FROM students_course WHERE email='$email'";
       $result_set=$this->pdo->exec($query);
-    if ($result_set){
+    if ($result_set){ 
         return $result_set;
     }
  }
