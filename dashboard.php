@@ -61,6 +61,7 @@ include_once "include.php";
     <form method="get" action="logout.php">
      <button class="btn btn-danger">Log Out</button>
     </form>
+    <a href="resetpassword.php">RESET PASSWORD</a>
      </div>
    
      

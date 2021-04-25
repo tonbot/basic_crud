@@ -82,6 +82,16 @@ function registerStudent($fname, $lname, $email, $pass) // register student
  }
 
 
+  function resetpassword($email, $newpass)
+  {
+    $query="UPDATE students_profile  SET  passwordd='$newpass' WHERE email='$email'";
+    $result_set=$this->pdo->exec($query);
+    if ($result_set){
+        return $result_set;
+    }
+  }
+
+
  }
 
 
